@@ -1,0 +1,786 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>마지막 자유주제 프로젝트_ 개인 프로젝트 다듬기</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2b5f007f-1a69-8038-8e12-e2a2db68ece1" class="page sans"><header><h1 class="page-title">마지막 자유주제 프로젝트_ 개인 프로젝트 다듬기</h1><p class="page-description"></p></header><div class="page-body"><h2 id="2b5f007f-1a69-8148-af58-e83f4826a9f9" class=""><strong>1. 자유 주제에 대한 개인적인 생각</strong></h2><p id="2b5f007f-1a69-80d1-afd7-e0220506e4cf" class="">우테코 또한 최종 미션 평가에 대해 깊이 고민했을 것으로 생각합니다. 현재의 역량보다 성장 가능성을 중요하게 여기는 우테코의 가치관 아래서는, 오랜 기간 역량을 쌓아온 지원자와 짧은 기간 폭발적인 성장 욕구를 보여준 지원자의 우열을 단순히 정량적으로 가리기 어렵기 때문입니다.</p><p id="2b5f007f-1a69-80df-916f-f41684c2d5be" class="">이러한 맥락에서 이번 과제는 수치화된 모델로 평가하기보다, 마치 예술 작품을 감상하듯 지원자가 몰입해 온 과정과 그 고유한 색깔을 들여다보려는 의도라고 해석했습니다. 즉, 합격과 불합격이 단순한 점수 차이가 아니라, 지원자가 보여주는 몰입의 깊이와 평가자의 정성적 판단이 맞물려 결정되는 구조라고 이해했습니다.</p><h2 id="2b5f007f-1a69-81ce-80c4-da6220afc6d9" class=""><strong>2. 주제 선정 배경</strong></h2><p id="2b5f007f-1a69-81f1-92a9-f59bf050f36c" class="">&#x27;몰입&#x27;이라는 키워드가 이번 과제의 핵심이라면, 과제를 위한 과제가 아니라 제가 앞으로 나아가야 할 백엔드 개발자로서의 방향성에 실질적인 도움이 되는 프로젝트에 몰입해야 한다고 판단했습니다. 저는 우테코 합격 여부를 떠나 앞으로도 백엔드 개발자를 지향할 것이고, 그에 대한 역량을 쌓아나갈 것입니다.</p><p id="2b5f007f-1a69-81b6-8e56-e4a9b8898ccd" class="">우선 제가 만들고 싶은 부분은 다음과 같습니다.</p><ul id="2b5f007f-1a69-81b1-9372-e2c5cdb07728" class="bulleted-list"><li style="list-style-type:disc">프로덕션 단계에서의 보안에 대한 전문성</li></ul><ul id="2b5f007f-1a69-8138-8f68-d2c399b73376" class="bulleted-list"><li style="list-style-type:disc">프로덕션 파이프라인 구축 경험</li></ul><ul id="2b5f007f-1a69-81e5-849b-eef50244ef23" class="bulleted-list"><li style="list-style-type:disc">트래픽 모니터 관리</li></ul><ul id="2b5f007f-1a69-81e3-94b4-d0a85ecab84c" class="bulleted-list"><li style="list-style-type:disc">가독성 높은 클린 코딩</li></ul><p id="2b5f007f-1a69-816b-a241-c17b6d89041a" class="">위 경험을 만드는 데는 웹 서비스가 가능한 애플리케이션 프로젝트를 구축해놓는 게 가장 훌륭한 방식이라고 느껴졌습니다. 클론 프로젝트를 구축하면 일반적인 웹 애플리케이션 개발에 필요한 역량과 경험을 쌓을 수 있고, 이후 모니터링 시스템이나 결제 시스템처럼 프로덕션에서 필수로 사용되는 기능을 부담 없이 수정해가면서 학습하기 좋은 솔루션을 만들 수 있기 때문입니다.</p><p id="2b5f007f-1a69-8102-bb79-fd96e1b5caa4" class="">이전에 이미 그러한 역량을 쌓기 위해, 그리고 개인 포트폴리오로써 활용하기 위해 커뮤니티 클론 웹페이지를 만들고 있었기 때문에, 이를 좀 더 정교하게 다듬는 것을 이번 자유 주제로 선정했습니다.</p><p id="2b5f007f-1a69-800c-b9f2-d2f12dc0f63a" class="">
+</p><h3 id="2b5f007f-1a69-81d4-899b-d433f1eacdf1" class=""><strong>침하하 클론</strong></h3><p id="2b5f007f-1a69-8150-b83b-daf632ea5949" class="">저는 구독자 300만 유튜버 침착맨이 운영하는 웹사이트 침하하를 클론 프로젝트로서 진행하고 있습니다. 아마존이나 트위터보다 구현 난이도가 낮으면서도 실제로 프로덕션 단계에서 제대로 운영하고 있어서 제게 난이도가 적절하게 느껴졌기 때문입니다. 가장 마지막으로 수정한 웹 애플리케이션의 형태는 다음과 같습니다.</p><p id="2b5f007f-1a69-8049-8a26-f400fcf399e9" class="">
+</p><p id="2b5f007f-1a69-8030-9e60-c7f6703d1872" class="">
+</p><figure id="2b5f007f-1a69-8074-8b81-c8e8f8786c3a" class="image"><a href="image.png"><img style="width:576px" src="image.png"/></a><figcaption>대문 예시</figcaption></figure><p id="2b5f007f-1a69-806a-9d55-fc9e535d15cf" class="">
+</p><figure id="2b5f007f-1a69-8013-9b09-e764561befbf" class="image"><a href="image%201.png"><img style="width:624px" src="image%201.png"/></a><figcaption>카테고리 내 게시판 예시</figcaption></figure><p id="2b5f007f-1a69-8032-b015-c97959ec598d" class="">
+</p><p id="2b5f007f-1a69-80b7-ac0a-d1bcd6762cfa" class="">
+</p><figure id="2b5f007f-1a69-80b3-872e-e1d4377a9611" class="image" style="text-align:center"><a href="%EA%B7%B8%EB%A6%BC1.png"><img style="width:624px" src="%EA%B7%B8%EB%A6%BC1.png"/></a><figcaption>로그인 기능</figcaption></figure><p id="2b5f007f-1a69-8117-b061-da8e5598438a" class="">
+</p><p id="2b5f007f-1a69-8028-acfe-c41e7505b059" class="">
+</p><figure id="2b5f007f-1a69-80aa-b080-e4f885c07898" class="image" style="text-align:center"><a href="%EA%B7%B8%EB%A6%BC2.png"><img style="width:624px" src="%EA%B7%B8%EB%A6%BC2.png"/></a><figcaption><a href="https://drive.google.com/file/d/12ARXJF60BOJOX4yccllatYYsILG9Ybxj/view?usp=drive_link">게시글, 댓글 수정, 삭제 등 (영상 첨부)</a></figcaption></figure><p id="2b5f007f-1a69-80f6-b2a9-da8f31e6dd65" class="">
+</p><figure id="2b5f007f-1a69-80f4-b0f5-f7e4d643a991" class="image"><a href="image%202.png"><img style="width:624px" src="image%202.png"/></a><figcaption><a href="https://drive.google.com/file/d/1_XvHkB_VW911fpITGXauKaKDiZzlvdlL/view?usp=drive_link">이미지 첨부(영상 있음)</a></figcaption></figure><p id="2b5f007f-1a69-8056-b57a-dde07f54e2cd" class="">
+</p><p id="2b5f007f-1a69-80b6-bdff-f3c429d34165" class="">웹사이트 배포 형태는 다음과 같습니다.</p><figure id="2b5f007f-1a69-8092-9d13-c7024bb1863f" class="image"><a href="image%203.png"><img style="width:528px" src="image%203.png"/></a></figure><p id="2b5f007f-1a69-80bd-9e13-d1623cac69b4" class="">
+</p><h3 id="2b5f007f-1a69-8029-b7fe-fddbd1d1aadb" class="">클라우드 대신 로컬을 선택한 이유</h3><p id="2b5f007f-1a69-8063-894b-e0b8ca891b06" class="">AWS 를 쓰지 않은 것은 온디멘드 방식의 금액 산출방식에 불만이었기 때문입니다. 그보다는 한번의 지출로 소요 비용이 예측가능하게 두고 싶어 위와 같은 방식으로 전체 구조를 설계했습니다.</p><p id="2b5f007f-1a69-807f-a66d-c0f28d1b4ab8" class="">그러나 일반 로컬에서 서비스를 하게 되면 일반적인 포트 포워딩은 방화벽에 구멍을 뚫는 것과 같아 보안 취약점이 될 수 있습니다. 이때 Zero Trust Tunnel을 사용하면 <strong>인바운드 포트를 전혀 열지 않고도</strong> 외부 접속을 안전하게 처리할 수 있습니다.<br/> 적용하는 방법도 Zero Trust 를 설정하면 Cloudflare 다운로드 가능한 개인용 도커 이미지를 컨테이너로 실행하면 되기 때문에 쉽고 간단했습니다.</p><p id="2b5f007f-1a69-8044-b9d5-e883b7db6aef" class=""> 미니 PC 가 풀스택을 담당하여 내부 컨테이너에서 실행되는 것은 다음과 같습니다.</p><table id="2b5f007f-1a69-80f6-b3e4-e3d6a1fb1068" class="simple-table"><tbody><tr id="2b5f007f-1a69-805c-bbe6-ce309e45b41c"><td id="jBMy" class=""><strong>컨테이너</strong></td><td id="&gt;o&gt;E" class=""><strong>역할</strong></td><td id="WY;A" class=""><strong>사용 프로그램</strong></td></tr><tr id="2b5f007f-1a69-8072-b76d-d0f9c9701e9e"><td id="jBMy" class="">백엔드</td><td id="&gt;o&gt;E" class="">API 서버 및 비즈니스 로직 처리</td><td id="WY;A" class="">Spring Boot</td></tr><tr id="2b5f007f-1a69-8038-b776-ccf238b8ddfc"><td id="jBMy" class="">프론트엔드</td><td id="&gt;o&gt;E" class="">사용자 인터페이스 제공</td><td id="WY;A" class="">React + Vite</td></tr><tr id="2b5f007f-1a69-803b-953a-e514b355267f"><td id="jBMy" class="">인증 서버</td><td id="&gt;o&gt;E" class="">사용자 인증 및 권한 관리</td><td id="WY;A" class="">Keycloak</td></tr><tr id="2b5f007f-1a69-80c3-82fc-f1294b34d97b"><td id="jBMy" class="">인증 서버용 DB</td><td id="&gt;o&gt;E" class="">인증 서버 데이터 저장</td><td id="WY;A" class="">PostgreSQL</td></tr><tr id="2b5f007f-1a69-808a-97fb-e38e2d2dfb12"><td id="jBMy" class="">웹 서비스 DB</td><td id="&gt;o&gt;E" class="">게시글 및 메타데이터 저장</td><td id="WY;A" class="">MySQL</td></tr><tr id="2b5f007f-1a69-8030-a3a2-e91b2fe75637"><td id="jBMy" class="">객체 스토리지</td><td id="&gt;o&gt;E" class="">이미지 및 파일 저장</td><td id="WY;A" class="">SeaweedFS</td></tr></tbody></table><h2 id="2b5f007f-1a69-81a1-9f76-c187c6f1cabd" class=""><strong>3. 상세 수행 내용</strong></h2><p id="2b5f007f-1a69-81d1-b25a-c4904af8fe3a" class="">개인 웹페이지를 프로덕션 레벨로 고도화하면서 중요하게 여긴 요소들을 중심으로 작업을 진행했습니다.</p><p id="2b5f007f-1a69-80a1-952b-c00bc56ef73a" class="">
+</p><p id="2b5f007f-1a69-81ab-835f-c6b59b986427" class="">1. 배포 환경 동기화</p><p id="2b5f007f-1a69-800a-89f1-f649755a4e5c" class="">오랫동안 방치되었던 프로젝트이다 보니 로컬 개발 환경과 실제 배포 환경 간의 괴리가 컸습니다. 초기에는 하나의 <code>docker-compose.yml</code> 파일을 기반으로 환경 변수(.env)만 교체하여 이 문제를 해결하려 했습니다.</p><p id="2b5f007f-1a69-803c-9b10-c84f500e8f40" class="">하지만 배포 환경을 재구축하는 과정에서, 단일 파일 관리가 오히려 복잡도를 높인다는 사실을 발견했습니다.</p><ul id="2b5f007f-1a69-8009-86c5-db1396fc29b1" class="bulleted-list"><li style="list-style-type:disc"><strong>보안 및 설정의 차이:</strong> URL 스키마, 복잡한 비밀번호 정책, 스토리지 구성 등이 판이하게 달랐습니다.</li></ul><ul id="2b5f007f-1a69-809e-9935-d80e1efc24e7" class="bulleted-list"><li style="list-style-type:disc"><strong>인프라 아키텍처의 차이:</strong> 배포(Prod) 환경은 보안을 위해 <code>Cloudflare Zero Trust(Tunnel)</code>를 통해 외부 트래픽을 처리하지만, 개발(Dev) 환경은 간단한 <code>Nginx</code> 리버스 프록시로 처리합니다.</li></ul><p id="2b5f007f-1a69-8052-89bf-c1abc4f1feb0" class="">그래서  <strong>개발용과 배포용 파일 및 파라미터를 폴더(리포지토리) 단위로 분리</strong>하기로 했습니다.</p><p id="2b5f007f-1a69-8017-80d6-ee087faa5e38" class="">
+</p><p id="2b5f007f-1a69-8081-b25c-c132d9b42d13" class=""><strong>[A] 개발용 인프라 구조 (Public)</strong><br/>외부의 복잡한 보안 설정 없이 로컬에서 빠르게 구동할 수 있도록 Nginx 기반으로 구성했습니다.</p><ul id="2b5f007f-1a69-8085-8e1f-c61101776699" class="bulleted-list"><li style="list-style-type:disc"><strong>Repository:</strong> <a href="https://github.com/leeve1247-chimhaha-clone/chimhaha-clone-docker-compose">chimhaha-clone-docker-compose</a></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2b5f007f-1a69-8058-b518-d3a8b27eb706" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">.
+├── backend
+│   ├── build
+│   ├── configs
+│   └── Dockerfile
+├── config.properties
+├── docker-compose.seaweedfs.yml
+├── docker-compose.yml
+├── frontend
+│   └── dist
+├── keycloak-cert
+│   ├── cert.key
+│   └── cert.pem
+├── keycloak-providers
+│   └── naver-keycloak-identity-provider-26.0.2.jar
+├── keycloak-themes
+│   └── naver
+├── mysql-init.sql
+├── nginx.conf
+├── README.md
+└── seaweedfs
+    ├── config.json
+    └── readme.md</code></pre><p id="2b5f007f-1a69-80b0-aa33-c7a448a304e3" class="">
+</p><p id="2b5f007f-1a69-8092-962a-c3842bd96d5e" class=""><strong>[B] 배포용 인프라 구조 (Private)</strong><br/>민감한 자격 증명(Credentials)과 Cloudflare 터널 설정이 포함되어 있어 Private으로 관리합니다.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2b5f007f-1a69-80ce-a933-e313acbba107" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">
+|-- credentials
+|   |-- cert.key
+|   `-- cert.pem
+|-- docker-compose.yml
+|-- keycloak-providers
+|   `-- naver-keycloak-identity-provider-26.0.2.jar
+|-- keycloak-themes
+|   `-- naver
+|-- mysql-init
+|-- mysql-init.sql
+|-- nginx.conf
+|-- spring
+|   |-- Dockerfile
+|   |-- README.md
+|   |-- build
+|   |-- build.gradle
+|   |-- configs
+|   |-- gradle
+|   |-- gradlew
+|   |-- gradlew.bat
+|   |-- mysql-init.sql
+|   |-- readme
+|   |-- settings.gradle
+|   `-- src
+`-- vite
+    |-- README.md
+    |-- credential
+    |-- dist
+    |-- eslint.config.js
+    |-- index.html
+    |-- node_modules
+    |-- package-lock.json
+    |-- package.json
+    |-- public
+    |-- src
+    |-- tsconfig.app.json
+    |-- tsconfig.json
+    |-- tsconfig.node.json
+    `-- vite.config.ts</code></pre><p id="2b5f007f-1a69-801b-8dd6-eaa8264cf9c6" class="">
+</p><p id="2b5f007f-1a69-80ff-a61b-eca3661eb1a6" class="">그리고 개발과 배포 버전을 동기화하는 방법은 다음 처럼 진행하게 변경했습니다</p><ol type="1" id="2b5f007f-1a69-80c1-b168-d24fae6664ef" class="numbered-list" start="1"><li>spring 에서 빌드 후 나온 .jar 파일 압축 해제</li></ol><ol type="1" id="2b5f007f-1a69-80f7-904a-e3ef59bc75e2" class="numbered-list" start="2"><li>vite 에서 빌드</li></ol><ol type="1" id="2b5f007f-1a69-8044-8a0f-e4eb65a6de43" class="numbered-list" start="3"><li>배포용 디렉토리 backend 와 frontend 에 붙여넣기</li></ol><ol type="1" id="2b5f007f-1a69-8031-858e-eff729a7df42" class="numbered-list" start="4"><li>도커 컴포즈 파일 재실행</li></ol><p id="2b5f007f-1a69-800f-8962-f56636585a7c" class="">
+</p><p id="2b5f007f-1a69-80be-8a43-dbbe4d827e90" class="">환경 변수 분리를 통해 개발(Dev)과 배포(Prod) 환경 간의 충돌 문제는 해결했고, 배포 프로세스 또한 <strong>&#x27;빌드 → 파일 이동 → 컨테이너 재실행&#x27;의 3단계</strong>로 정리했습니다.</p><p id="2b5f007f-1a69-803b-a2f1-dc00809e338f" class="">다만, 이 과정이 여전히 수동으로 이루어지고 있다는 점은 아쉬움으로 남습니다. 향후 쉘 스크립트(Shell Script) 작성이나 CI/CD 도구 도입을 통해 이 반복 작업을 자동화하는 것이 다음 목표입니다.</p><p id="2b5f007f-1a69-80d3-97f2-c888400cdd6f" class="">
+</p><p id="2b5f007f-1a69-8197-a2b9-d3175f826ea6" class="">2. 스토리지 마이그레이션 (MinIO → SeaweedFS)</p><p id="2b5f007f-1a69-81ad-a1bf-fe6bda29d248" class="">기존에는 객체 스토리지로 MinIO를 고려했으나, 최근 오픈소스 진영에 적대적인 라이선스 정책 변경을 확인하고 대안이 필요하다고 판단했습니다. 조사한 대안은 다음과 같고, 살펴본 특성은 이렇습니다.</p><table id="2b5f007f-1a69-8066-bcf4-ee048ec60fe4" class="simple-table"><tbody><tr id="2b5f007f-1a69-80c1-af27-c78a6ea8da2e"><td id="x&lt;w}" class=""><strong>특성</strong></td><td id="s@RO" class=""><strong>GarageFS</strong></td><td id="x&lt;m:" class=""><strong>Ceph</strong></td><td id=";&lt;@u" class=""><strong>SeaweedFS</strong></td><td id="TBPF" class=""><strong>OpenMaxIO</strong></td></tr><tr id="2b5f007f-1a69-8021-8b78-cf5148e56655"><td id="x&lt;w}" class=""><strong>최소 요구 규모</strong></td><td id="s@RO" class="">소규모 (단일 노드부터 가능)</td><td id="x&lt;m:" class="">중대규모 (최소 3노드 권장)</td><td id=";&lt;@u" class="">소규모 (단일 노드부터 가능)</td><td id="TBPF" class="">소규모 (단일 노드부터 가능)</td></tr><tr id="2b5f007f-1a69-8040-8b87-c1c13a746109"><td id="x&lt;w}" class=""><strong>클러스터 구성 가능 여부</strong></td><td id="s@RO" class="">가능 (분산 스토리지 지원)</td><td id="x&lt;m:" class="">가능 (대규모 클러스터 지향)</td><td id=";&lt;@u" class="">가능 (마스터-볼륨 서버 구조)</td><td id="TBPF" class="">가능 (분산 모드 지원)</td></tr><tr id="2b5f007f-1a69-805c-a5fd-e3fd258a66ad"><td id="x&lt;w}" class=""><strong>라이센스</strong></td><td id="s@RO" class="">AGPL v3</td><td id="x&lt;m:" class="">LGPL v2.1 / LGPL v3</td><td id=";&lt;@u" class="">Apache 2.0</td><td id="TBPF" class="">AGPL v3</td></tr><tr id="2b5f007f-1a69-8061-90e3-f8fb855e27d8"><td id="x&lt;w}" class=""><strong>S3 API 지원 정도</strong></td><td id="s@RO" class="">기본적인 S3 API 지원</td><td id="x&lt;m:" class="">완전한 S3 API 호환 (RGW 통해)</td><td id=";&lt;@u" class="">S3 API 지원 (일부 기능 제한)</td><td id="TBPF" class="">완전한 S3 API 호환</td></tr></tbody></table><p id="2b5f007f-1a69-8034-ba3e-f31f2461474b" class="">우선 GarageFS 를 사용해보았으나 문서에 설명이 부족하고, 특히 버킷별 정책 설정관련하여 부족한 점이 있어  SeaweedFS 로 마이그레이션을 수행했습니다. OpenMaxIO는 훌륭한 대안이지만 최근 업데이트가 더뎌 유지보수의 지속성을 확신하기 어려웠고, Ceph는 미니 PC 환경에서 구동하기에는 하드웨어 리소스(RAM) 요구사항이 과도했습니다. 그래서 SeaweedFS 로 마이그레이션을 결정하였고, 공식 깃헙과 도커 이미지 설명란을 살펴보면서 적용할 수 있었습니다.</p><p id="2b5f007f-1a69-80eb-b053-f7a1fcdf68f0" class="">
+</p><p id="2b5f007f-1a69-81bd-aed7-f8ff2be6115a" class="">3. 인증 서버 트러블 슈팅</p><p id="2b5f007f-1a69-8177-8e40-cc9631562eb1" class="">Keycloak 인증 서버의 관리자 계정 콘솔을 브라우저로 접속했을 때, 리다이렉트가 무한히 일어나는 문제가 발생했습니다. Keycloak 컨테이너를 디버그 옵션으로 설정하고 문제를 알아본 뒤, 이는 리버스 프록시 설정에서 포워딩되는 데이터 정보에 차이가 발생해서 일어난 문제라는 것을 알았습니다.</p><p id="2b5f007f-1a69-802b-89ec-df581d6356aa" class="">Keycloak 설명서 및 깃헙 이슈란을 살펴보고 컨테이너 실행 환경 변수 중 <code>KC_PROXY_HEADERS</code> , <code>KC_HOSTNAME</code>  를 추가 설정을 해야한다는 사실알게 되어 이를 추가했습니다.</p><p id="2b5f007f-1a69-8075-9b17-f6bfd2ab1a75" class=""> 개발 환경에서는 Nginx 의 <code>X-Forwarded</code> 헤더에 XFF (포워딩 IP), XFP (포워딩 TLS 여부), XFPort (포워딩 Port), XRI (실제 접속 시도한 IP) 를 추가함으로써 해결할 수 있었습니다.</p><p id="2b5f007f-1a69-8092-b676-c77ff1cb99fb" class="">배포환경인 Zero Trust 에서는 이러한 포워딩 데이터를 사전 설정없이 기본값으로 제공해주고 있어서 리버스 프록시 설정은 필요 없었습니다. 그래서 KeyCloak 에서 제공하는 배포 시 권장하는 URI 규칙만 설정하여 처리했습니다.</p><h2 id="2b5f007f-1a69-816d-882e-fe0a23d214c5" class=""><strong>4. 소감</strong></h2><p id="2b5f007f-1a69-8133-9d73-cfc929430935" class="">그동안 프로젝트 진행 사항을 정돈하여 글로 남겨놓는 것을 숙제처럼 여기며 자꾸 미뤄왔었는데, 이번 2주간 프리코스를 통해 어질러져 있던 프로젝트를 정돈할 수 있어서 좋았습니다. 단일 프로젝트임에도 불구하고 실제 배포를 할 수 있게끔 구성하면서, 실제 상용단계에서 고민해볼법한 이슈들이 지속적으로 발생하여 꾸준이 다듬고 개선해나가면 백엔드뿐만 아니라 웹 서비스 운영 전반에 대한 이해를 높일 수 있을 것으로 기대가 됩니다. 따라서 앞으로도 이를 지속적으로 수정해나갈 것입니다.</p><h2 id="2b5f007f-1a69-81e5-8ac7-c5eeffb0c833" class=""><strong>5. 향후 계획</strong></h2><p id="2b5f007f-1a69-81a5-bc55-f27f7f9948a7" class="">웹 애플리케이션 클론 프로젝트를 수행하던 중, 프론트엔드에서 여러 카테고리의 게시글을 한 페이지에 동시에 게시하고 있는 구조를 발견했습니다. 이를 백엔드에서 요청할 때 캐싱(Caching)을 활용하는 게 좋다고 판단하여, Redis를 제대로 적용해 봐야겠다고 느꼈습니다.</p><p id="2b5f007f-1a69-81a1-a874-d3bce5a4cd2c" class="">지금 상태에서는 간단히 게시글 뷰 카운트(조회수)를 올리는 데에만 쓰고 있는데, 추후 스프링의 <code>@Cacheable</code> 어노테이션을 활용하여 가용성 높은 코드를 작성할 계획입니다.</p><p id="2b5f007f-1a69-80b5-a14b-e4a528eda223" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
